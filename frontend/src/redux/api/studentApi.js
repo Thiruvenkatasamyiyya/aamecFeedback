@@ -4,6 +4,7 @@ export const studentApi = createApi({
     reducerPath : "studentApi",
     baseQuery : fetchBaseQuery({baseUrl:"http://localhost:3000/api/v1"}),
     keepUnusedDataFor: 60,
+    tagTypes : ["Review"],
     endpoints : (builder)=>({
         registerStudent : builder.mutation({
             query(body){
@@ -21,13 +22,16 @@ export const studentApi = createApi({
                     method : "PUT",
                     body
                 }
-            }
+            },
+            invalidatesTags : ["Review"]
+            
         }),
         getStudents: builder.query({
             query: (id) => ({
             url: `/getStudent/${id}`,
             method: 'GET'
-        })
+        }),
+        providesTags : ["Review"]
         })
     })
 })
