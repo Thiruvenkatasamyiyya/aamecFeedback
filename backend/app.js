@@ -19,7 +19,7 @@ console.log('PORT:', process.env.PORT);
 console.log('MONGO_URI:', process.env.MONGO_URI);
 // 3. Middlewares
 app.use(express.json());
-app.use(cors());
+app.use(cors({ origin: 'https://aamec-feedback8204.vercel.app' }));
 
 // 4. Routes
 app.use('/api/v1', courserouter);
